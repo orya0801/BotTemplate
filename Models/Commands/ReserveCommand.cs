@@ -29,30 +29,34 @@ namespace BotTemplate.Models.Commands
 
             answer = "Во сколько планируете прийти?";
 
-            //var keyboardButton_day = new InlineKeyboardButton
-            //{
-            //    Text = "День",
-            //};
-
-            //var keyboardButton_evening = new InlineKeyboardButton();
-            //keyboardButton_evening.Text = "Вечер";
-            //var keyboardButton_night = new InlineKeyboardButton();
-            //keyboardButton_night.Text = "Ночь";
-
-            //List<InlineKeyboardButton> buttons = new List<InlineKeyboardButton>
-            //    {
-            //        keyboardButton_day
-            //        //keyboardButton_evening
-            //        //keyboardButton_night
-            //    };
-
-            //InlineKeyboardMarkup keyboard = new InlineKeyboardMarkup(buttons);           
+            var keyBoard = new ReplyKeyboardMarkup
+            {
+                Keyboard = new[]
+                {
+                    new[]
+                    {
+                        new KeyboardButton("\U0001F3E0 Главная")
+                    },
+                    new[]
+                    {
+                        new KeyboardButton("\U0001F451 Ранк")
+                    },
+                    new []
+                    {
+                        new KeyboardButton("\U0001F45C Магазин")
+                    },
+                    new []
+                    {
+                        new KeyboardButton("\U0001F4D6 Помощь")
+                    }
+                }
+            };
 
             await botClient.SendTextMessageAsync(
                 chatId: chatId,
                 text: answer,
                 disableWebPagePreview: false,
-                //replyMarkup: keyboard,
+                replyMarkup: keyBoard,
                 parseMode: ParseMode.Default);
         }
     }
